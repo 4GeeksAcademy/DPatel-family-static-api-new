@@ -31,13 +31,16 @@ class FamilyStructure:
             member["id"] = self._generateId()
         self._members.append(member)
 
-    def delete_member(self, id):
-        # fill this method and update the return
-        pass
+    def delete_member(self, id: int):
+        self._members = list(filter(
+            lambda person: person["id"] != id,
+            self._members
+        ))
 
-    def get_member(self, id):
-        # fill this method and update the return
-        pass
+    def get_member(self, id: int):
+        for person in self._members:
+            if person["id"] == id:
+                return person
 
     # this method is done, it returns a list with all the family members
     def get_all_members(self):

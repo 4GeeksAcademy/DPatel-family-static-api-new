@@ -62,6 +62,17 @@ def create_members():
     jackson_family.add_member(request.json)
     return (jsonify({}), 200)
 
+@app.route("/member/<int:id>", methods=["GET"])
+def get_member(id: int):
+    person = jackson_family.get_member(id)
+    return (jsonify(person), 200)
+
+@app.route("/member/<int:id>", methods=["DELETE"])
+def delete_member(id: int):
+    person = jackson_family.delete_member(id)
+    return (jsonify({
+        "done": True
+    }), 200)
 
 
 
